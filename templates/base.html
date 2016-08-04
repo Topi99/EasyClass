@@ -30,7 +30,7 @@
 		<nav>
 			<div class="nav-wrapper indigo darken-1">
 				<a href="{%url 'posts:list'%}" class="brand-logo">FixterBlog</a>
-				<ul class="right">
+				<ul class="right hide-on-med-and-down">
 					<li><a href="#!">Inicio</a></li>
 					<li><a href="{%url 'posts:nuevo'%}">Nuevo</a></li>
 					{%if request.user.is_authenticated%}

@@ -1,0 +1,63 @@
+{%extends 'base.html'%}
+
+{%block styles%}
+	.title{
+		font-family: 'Bungee Shade', cursive;
+	}
+
+	.cuerpo{			
+		font-family: 'Shadows Into Light', cursive;
+	}
+{%endblock styles%}
+
+{%block header%}
+<div class="parallax-container">
+  <h1 class="title">{{post.titulo}}</h1><div class="parallax"><img src="/media/{{post.imagen}}"></div>
+</div>
+{%endblock header%}
+
+{%block content%}
+	<p>Por: <b>{{post.autor}}</b></p>
+	<p class="flow-text cuerpo">
+		{{post.cuerpo}}
+	</p>
+
+	<form action="." method="post">
+		<div class="chip">
+			<img src="{{request.user.profile.avatar.url}}" alt="">
+			{{request.user.username}}
+		</div>	
+		<div class="input-field">
+			{%csrf_token%}
+			{{comment_form}}
+			<input type="submit" class="btn">
+		</div>
+	</form>
+
+	<div class="container row col s12">
+		<h2>Todos los comentarios:</h2>
+		{%for c in post.comentarios.all%}	
+			<div class="card grey lighten-2 col s12">
+				<div class="card-content">
+					<span class="card-title"><div class="chip"><img src="{{c.autor.profile.avatar.url}}"> {{c.autor.username}}<br>{{c.fecha}}</div></span>
+					<p>
+						{{c.cuerpo}}
+					</p>
+				</div>
+			</div>	
+		{%endfor%}
+	</div>
+{%endblock content%}
+
+<section class="section">
+	<article class="container">
+
+	</article>
+</section>
+
+{%block scripts%}
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+{%endblock scripts%}
+

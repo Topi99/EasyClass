@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+
+{%block content%}
+	<form action="." method="POST">
+		{%csrf_token%}
+		<div class="input-field">
+			{{form.foto}}
+		</div>
+	</form>
+{%endblock content%}

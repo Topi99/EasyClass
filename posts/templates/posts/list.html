@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{% block titulo%}
+	Inicio
+{% endblock titulo%}
+
+{%block content%}
+	<h1>Todos los Posts</h1>
+
+	{%for p in posts%}
+		<a href="{{p.get_absolute_url}}" class="grey-text text-darken-4"><h3>{{p.titulo}}</h3></a>
+		<p>Autor: <b> {{p.autor}} </b></p>
+		<p>Fecha de Publicación: <b> {{p.fecha}} </b> </p>
+	{%empty%}
+		<h3>No hay posts</h3>
+	{%endfor%}
+{%endblock content%}

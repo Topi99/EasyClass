@@ -1,0 +1,91 @@
+{%extends 'base.html'%}
+
+{%block header%}
+	
+	<div class="parallax-container">
+		<h1 class="title">Bienvenido a tu Dashboard {{request.user.username.title}}</h1>
+    <div class="parallax"><img src="{{request.user.profile.foto.url}}"></div>
+  </div>
+
+{%endblock header%}
+
+
+{%block content%}
+
+	<div class="col s12 m6">
+		<img src="{{request.user.profile.avatar.url}}" class="avatar" alt="">
+	</div>
+
+	<a href="{%url 'logout'%}" class="btn col s12 m6 red">Cerrar Sesion</a>
+
+	<form action="." method="POST" enctype="multipart/form-data" class="row top-space">
+		
+		{%csrf_token%}
+
+		<div class="input-field col s6">
+			<label for="id_first_name">First Name</label>
+			{{user_form.first_name}}
+		</div>
+
+		<div class="input-field col s6">
+			<label for="id_last_name">Last Name</label>
+			{{user_form.last_name}}
+		</div>
+
+		<div class="input-field col s12">
+			<label for="id_bio">Biografía</label>
+			{{profile_form.bio}}
+		</div>
+
+		<div class="input-field col s12">
+			<label for="id_date_of_birth">Año de nacimiento</label>
+			{{profile_form.date_of_birth}}
+		</div>
+
+		<div class="input-field top-space col m6 s12">
+			<label for="id_foto">Foto de Portada (Larga)</label>
+			{{profile_form.foto}}
+		</div>
+
+		<div class="input-field top-space col m6 s12">
+			<label for="id_avatar">Foto de perfil</label>
+			{{profile_form.avatar}}
+		</div>
+
+		<input type="submit" value="Cambiar" class="btn top-space col s12 green darken-1">
+
+	</form>
+
+	<div class="top-space container col s12">
+		<h2>Todos tus Posts</h2>
+
+		{%for p in request.user.publicaciones.all%}
+			<div class="col s12 m4">
+				<div class="card grey lighten-3 hoverable">
+					<div class="card-image waves-effect waves-block">
+						<img src="{{p.imagen.url}}">
+						<span class="card-title">
+							<a href="{{p.get_absolute_url}}" class="white-text">{{p.titulo}}</a>
+						</span>
+					</div>
+					<div class="card-content">
+						<p>Fecha de publicacion:{{p.fecha}}</p>
+					</div>
+					<div class="card-action">
+						<a href="{{p.get_absolute_url}}">Ver Más</a>
+					</div>
+				</div>
+			</div>
+		{%endfor%}
+
+	</div>
+
+{%endblock content%}
+
+{%block scripts%}
+	
+  $(document).ready(function(){
+    $('.parallax').parallax();
+		//$('label[for="id_avatar"').css({'margin-top':'10px'});
+  });
+{%endblock scripts%}

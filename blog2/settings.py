@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts',
     'django.contrib.admin',
+    'taggit',
 ]
 
 MIDDLEWARE_CLASSES = [

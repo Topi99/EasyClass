@@ -17,6 +17,12 @@
 {%endblock header%}
 
 {%block content%}
+	<span>Tags: 
+	{% for t in post.tags.all %}
+		<div class="chip">{{t.name}}</div>	
+	{% endfor %}
+
+	</span>
 	<p>Por: <b>{{post.autor}}</b></p>
 	<p class="flow-text cuerpo">
 		{{post.cuerpo}}
@@ -46,6 +52,41 @@
 				</div>
 			</div>	
 		{%endfor%}
+	</div>
+
+	<div class="container row col s12">
+		<h3>Tal vez te interesen:</h3>
+		{% for p in posts_similares %}
+			
+			<div class="col s12 m4">
+				<div class="card grey lighten-4 hoverable">
+					<div class="card-image waves-effect waves-block">
+						<img src="{{p.imagen.url}}">
+						<span class="card-title">
+							<a href="{{p.get_absolute_url}}" class="white-text">{{p.titulo}}</a>
+						</span>
+					</div>
+					<div class="card-content">
+						<p>Fecha de la publicacion: <b> {{p.fecha}} </b> </p>
+						<p>Autor de la publicacion: <b> {{p.autor.username}} </b> </p>
+					</div>
+					<div class="card-action">
+						<a href="{{p.get_absolute_url}}">Ver Más</a>
+						<a href="#!" class="activator">Ver Tags</a>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">Tags<i class="material-icons right">close</i></span>
+						{% for t in p.tags.all %}
+							<a href="{%url 'posts:list_tag' t.slug%}">{{t.name}}</a>
+							{% if not forloop.last %}
+								,
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+		{% endfor %}
 	</div>
 {%endblock content%}
 

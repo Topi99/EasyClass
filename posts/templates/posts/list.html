@@ -6,6 +6,9 @@
 
 {%block content%}
 	<h1>Todos los Posts</h1>
+	{% if tag %}
+		<h2>Filtrados con tag: {{tag}}</h2>
+	{% endif %}
 
 	{%for p in posts%}
 		<div class="col s12 m6">
@@ -22,6 +25,16 @@
 				</div>
 				<div class="card-action">
 					<a href="{{p.get_absolute_url}}">Ver Más</a>
+					<a href="#!" class="activator">Ver Tags</a>
+				</div>
+				<div class="card-reveal">
+					<span class="card-title grey-text text-darken-4">Tags<i class="material-icons right">close</i></span>
+					{% for t in p.tags.all %}
+						<a href="{%url 'posts:list_tag' t.slug%}">{{t.name}}</a>
+						{% if not forloop.last %}
+							,
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>

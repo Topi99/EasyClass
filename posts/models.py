@@ -2,7 +2,13 @@ from django.shortcuts import reverse
 from django.db import models
 from django.contrib.auth.models import User
 
+from taggit.managers import TaggableManager
+
 class Post(models.Model):
+	""" 
+	ESte modelo usa Tags
+	"""
+	tags = TaggableManager()
 	titulo = models.CharField(max_length=140)
 	cuerpo = models.TextField()
 	fecha = models.DateTimeField(auto_now=True)	

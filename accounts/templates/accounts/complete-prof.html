@@ -1,10 +1,28 @@
 {%extends 'base.html'%}
 
 {%block content%}
-	<form action="." method="POST">
+	<form action="." method="POST" enctype="multipart/form-data" class="row top-space">
 		{%csrf_token%}
-		<div class="input-field">
+		<div class="input-field col s12">
+			<label for="id_bio">Biografía</label>
+			{{form.bio}}
+		</div>
+
+		<div class="input-field col s12">
+			<label for="id_date_of_birth">Año de nacimiento</label>
+			{{form.date_of_birth}}
+		</div>
+
+		<div class="input-field top-space col m6 s12">
+			<label for="id_foto">Foto de Portada (Larga)</label>
 			{{form.foto}}
 		</div>
+
+		<div class="input-field top-space col m6 s12">
+			<label for="id_avatar">Foto de perfil</label>
+			{{form.avatar}}
+		</div>
+
+		<input type="submit" value="Cambiar" class="btn top-space col s12 green darken-1">
 	</form>
 {%endblock content%}

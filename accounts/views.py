@@ -9,14 +9,21 @@ from django.contrib.auth.decorators import login_required
 class Dashboard(View):
 	@method_decorator(login_required)
 	def get(self, request):
-		template_name = "accounts/perfil.html"
-		user_form = UserEditForm(instance=request.user)
-		profile_form = ProfileEditForm(instance=request.user.profile)
-		context = {
-			'user_form':user_form,
-			'profile_form':profile_form
-		}
-		return render(request, template_name, context)
+		if request.user.profile:
+			template_name = "accounts/perfil.html"
+			user_form = UserEditForm(instance=request.user)
+			profile_form = ProfileEditForm(instance=request.user.profile)
+			context = {
+				'user_form':user_form,
+				'profile_form':profile_form
+			}
+			return render(request, template_name, context)
+		else:
+			profile = Profile()
+			profile.user = request.user.save(commit=False)
+			profile.save()
+			return redirect('profile')
+			
 	def post(self, request):
 		template_name = "accounts/perfil.html"
 		
@@ -57,7 +64,7 @@ class Registration(View):
 			perfil.user = new_user
 			perfil.save()
 
-			return redirect('complete-reg')
+			return redirect('perfil')
 		else:
 			template_name = 'accounts/registration.html'
 			context = {
@@ -73,3 +80,13 @@ class CompleteProfile(View):
 			'form':form
 		}
 		return render(request, template_name,context)
+	def post(self, request):
+		user = request
+		profile_form = ProfileEditForm(data=request.POST, files=request.FILES)
+		if profile_form.is_valid():
+			profile_form.save()
+			return redirect('perfil')
+		else:
+			template_name = "accounts/complete-prof.html"
+			context = {}
+			return render(request, template_name, context)

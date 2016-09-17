@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'posts',
     'django.contrib.admin',
     'taggit',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -136,3 +137,7 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 SOCIAL_AUTH_TWITTER_KEY = 'HSDCJ4YBz3rCIgCSoLiPbKJXS'
 SOCIAL_AUTH_TWITTER_SECRET = 'yENtoDg5pcXp6FTvb9KmcxuJMpritlHJ8z4vex22ndjwlYzeP9'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly']
+}

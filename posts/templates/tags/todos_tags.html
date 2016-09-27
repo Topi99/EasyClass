@@ -1,0 +1,8 @@
+<div class="col s12 top-space">
+	<h5>Todos los temas:</h5>
+	{%for tag in tags%}
+		<div class="chip">
+			<a href="{%url 'posts:list_tag' tag.slug%}">{{tag.name}}</a>
+		</div>
+	{%endfor%}
+</div>

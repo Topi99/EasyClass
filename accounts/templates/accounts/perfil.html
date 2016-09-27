@@ -56,11 +56,11 @@
 
 	</form>
 
-	<div class="top-space container col s12">
-		<h2>Todos tus Posts</h2>
+	<div class="top-space row container col s12">
+		<h2 class="col s12">Todos tus Posts</h2>
 
 		{%for p in request.user.publicaciones.all%}
-			<div class="col s12 m4">
+			<div class="col s12 m4 item">
 				<div class="card grey lighten-4 hoverable">
 					<div class="card-image waves-effect waves-block">
 						<img src="{{p.imagen.url}}">
@@ -87,5 +87,10 @@
   $(document).ready(function(){
     $('.parallax').parallax();
 		//$('label[for="id_avatar"').css({'margin-top':'10px'});
+		$('.row').masonry({
+		  itemSelector: '.col',
+		  columnWidth: '.item',
+		  percentPosition: true
+		})
   });
 {%endblock scripts%}

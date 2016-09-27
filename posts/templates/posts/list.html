@@ -1,17 +1,23 @@
 {%extends 'base.html'%}
+{%load posts_tags%}
 
 {% block titulo%}
 	Inicio
 {% endblock titulo%}
 
+<div class="row">
+	
+</div>
+
 {%block content%}
-	<h1>Todas las preguntas</h1>
+	{%todos_tags%}
+	<h1 class="col s12">Todas las preguntas</h1>
 	{% if tag %}
-		<h2>Filtrados con tag: {{tag}}</h2>
+		<h2 class="col s12">Filtrados con tag: {{tag}}</h2>
 	{% endif %}
 
 	{%for p in posts%}
-		<div class="col s12 m6">
+		<div class="col s12 item m6">
 			<div class="card grey lighten-4 hoverable">
 				<div class="card-image waves-effect waves-block">
 					<img src="{{p.imagen.url}}">
@@ -42,3 +48,13 @@
 		<h3>No hay posts</h3>
 	{%endfor%}
 {%endblock content%}
+
+{%block scripts%}
+	$('.row').masonry({
+	  // set itemSelector so .grid-sizer is not used in layout
+	  itemSelector: '.col',
+	  // use element for option
+	  columnWidth: '.item',
+	  percentPosition: true
+	})
+{%endblock scripts%}

@@ -18,3 +18,7 @@ img.avatar{
 	height: 200px;
 	border-radius: 50%;
 }
+
+.indigo .darken-1{
+	background-color: #3C78D8 !important;
+}

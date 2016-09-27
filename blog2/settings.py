@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'taggit',
     'rest_framework',
+    'main',
 ]
 
 MIDDLEWARE_CLASSES = [

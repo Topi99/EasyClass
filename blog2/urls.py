@@ -3,11 +3,13 @@ from django.contrib import admin
 from posts import urls as UrlsPost
 from accounts import urls as UrlsAccounts
 from posts.api import urls as UrlsAPI
+from main import urls as UrlsMain
 from django.conf import settings
 from django.views.static import serve
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include(UrlsMain, namespace="main")),
     url(r'^posts/', include(UrlsPost, namespace="posts")),
     url(r'^accounts/', include(UrlsAccounts)),
     url('', include('social.apps.django_app.urls', namespace="social")),

@@ -16,6 +16,7 @@ class Post(models.Model):
 	autor = models.ForeignKey(User, related_name='publicaciones')
 	imagen = models.ImageField(upload_to="assets")
 	slug = models.SlugField(max_length=280)
+	respondido = models.BooleanField(default=False, blank=True)
 
 	class Meta:
 		ordering = ('-fecha',)

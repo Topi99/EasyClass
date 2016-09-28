@@ -1,0 +1,25 @@
+
+.header{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.middle{
+	position: absolute;
+	top:0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	margin-top: auto;
+	height: 70%;
+}
+
+.dos{
+	background: -webkit-linear-gradient(top, #3C78D8 0%,  #D83C3D 100%);
+}
+
+.tres{
+	background-color: #D83C3D;
+	top:200% !important;
+}

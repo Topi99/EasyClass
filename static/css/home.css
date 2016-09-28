@@ -16,6 +16,10 @@ h1,h2,h3,h4,h5,h6{
 	font-family: 'Montserrat', sans-serif;
 }
 
+.fixed{
+	position: fixed !important;
+}
+
 .middle{
 	position: absolute;
 	top:0 !important;
@@ -33,4 +37,8 @@ h1,h2,h3,h4,h5,h6{
 .tres{
 	background-color: #D83C3D;
 	top:200% !important;
+}
+
+.brand-logo,.nav-wrapper,nav{
+	transition: .4s;
 }

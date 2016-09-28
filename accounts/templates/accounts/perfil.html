@@ -1,10 +1,17 @@
 {%extends 'base.html'%}
+{%load static%}
 
 {%block header%}
 	
 	<div class="parallax-container">
 		<h1 class="title">Bienvenido a tu Dashboard {{request.user.username.title}}</h1>
-    <div class="parallax"><img src="{{request.user.profile.foto.url}}"></div>
+    <div class="parallax">
+    	{%if request.user.profile.foto%}
+    		<img src="{{request.user.profile.foto.url}}">
+   		{%else%}
+   			<img src="{%static 'assets/cover-default.png'%}" alt="">
+			{%endif%}
+    </div>
   </div>
 
 {%endblock header%}
@@ -13,7 +20,11 @@
 {%block content%}
 
 	<div class="col s12 m6">
+		{%if request.user.profile.avatar%}
 		<img src="{{request.user.profile.avatar.url}}" class="avatar" alt="">
+		{%else%}
+		<img src="{%static 'assets/perfil-default.jpg'%}" class="avatar" alt="">
+		{%endif%}
 	</div>
 
 	<a href="{%url 'logout'%}" class="btn col s12 m6 red">Cerrar Sesion</a>

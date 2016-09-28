@@ -1,8 +1,19 @@
+h1{
+	font-size: 5em !important;
+}
 
+h1,h2,h3,h4,h5,h6{
+	margin: 0 !important;
+}
+
+.rosa{
+	color: #EE82EE !important;
+}
 .header{
 	position: absolute;
 	height: 100%;
 	width: 100%;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .middle{

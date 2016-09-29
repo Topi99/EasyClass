@@ -1,4 +1,4 @@
-.title,.card-title{
+.title{
 	margin:0;
 	color:white;
 	position:absolute;
@@ -11,6 +11,10 @@
 
 .top-space{
 	margin-top: 20px;
+}
+
+.top-space.bigger{
+	margin-top: 50px; 
 }
 
 img.avatar{

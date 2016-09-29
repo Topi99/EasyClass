@@ -42,3 +42,10 @@ h1,h2,h3,h4,h5,h6{
 .brand-logo,.nav-wrapper,nav{
 	transition: .4s;
 }
+
+.boton{
+	background-color: #3E8CE4 !important;
+}
+.boton2{
+	background-color: #25F28E !important;
+}

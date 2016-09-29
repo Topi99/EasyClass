@@ -64,8 +64,13 @@
 	
 	<div class="header tres azul" style="background-color:#D83C3D; top:100%;">
 		<div class="middle">
-			<h2 class="sloganwhite-text center">Simple. Perfecto.</h2>
-			<h1 class="titulopink-text text-lighten-2 center">Easy Class</h1>
+			<h2 class="slogan white-text center">Inicia Ahora <br>y únete a nuestra comunidad.</h2>
+			<div class="center top-space bigger">
+				<a href="{%url 'posts:list'%}" class="btn boton">Ver Preguntas</a>
+				{% if not request.user.is_authenticated %}
+					<a href="/accounts/registro" class="btn boton2">Registrate</a>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 

@@ -23,6 +23,7 @@
 		<nav>
 			<div class="nav-wrapper azul">
 				<a href="{%url 'posts:list'%}" class="brand-logo center titulo">EasyClass</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 				<ul class="right hide-on-med-and-down">
 					<li><a href="{%url 'posts:list'%}">Todo</a></li>
 					<li><a href="{%url 'posts:nuevo'%}">Nuevo</a></li>
@@ -33,6 +34,16 @@
 						<li><a href="{%url 'login'%}">Iniciar Sesión</a></li>
 					{%endif%}
 				</ul>
+				 <ul class="side-nav" id="mobile-demo">
+	        <li><a href="{%url 'posts:list'%}">Todo</a></li>
+					<li><a href="{%url 'posts:nuevo'%}">Nuevo</a></li>
+					{%if request.user.is_authenticated%}
+						<li><a href="{%url 'perfil'%}">Dashboard</a></li>
+						<li><a href="{%url 'logout'%}">Cerrar Sesión de {{request.user.username.title}}</a></li>
+					{%else%}
+						<li><a href="{%url 'login'%}">Iniciar Sesión</a></li>
+					{%endif%}
+	      </ul>
 			</div>
 		</nav>
 	</div>
@@ -46,8 +57,8 @@
 
 	<div class="header dos azul" style="background-color:#D83C3D; top:100%;">
 		<div class="middle">
-			<h2 class="slogan white-text center">Simple. Perfecto.</h2>
-			<h1 class="titulo pink-text text-lighten-2 center">Easy Class</h1>
+			<h2 class="slogan white-text center">Resuelve tus dudas de una manera</h2>
+			<h1 class="titulo pink-text text-lighten-2 center">Easy</h1>
 		</div>
 	</div>
 	
@@ -67,6 +78,7 @@
 		{%endblock scripts%}
 
 		$(document).ready(function(){
+			$(".button-collapse").sideNav();
 			$('nav').css({'box-shadow':'none',
 										'background-color':'transparent',});
 			$('.nav-wrapper').css({'background-color':'transparent',});

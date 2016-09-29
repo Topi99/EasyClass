@@ -11,12 +11,13 @@
 	{%else%}
 		<p>Ingresa con tu nombre de usurio y contraseña</p>
 	{%endif%}
-		
+	<!-- Se comenta por el momento	
 	<div class="col s12">
 		<p class="col s12">O inicia tu sesión con</p> 
 		<a href="{%url 'social:begin' 'facebook'%}" class="btn col s6 indigo accent-4">Facebook</a>
 		<a href="{%url 'social:begin' 'twitter'%}" class="btn col s6 blue lighten-2">Twitter</a>
 	</div>
+	-->
 	<div class="login-form">
 		<form action="{%url 'login'%}" method="post">
 			{%csrf_token%}
